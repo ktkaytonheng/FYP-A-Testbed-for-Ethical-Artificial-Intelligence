@@ -227,8 +227,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80677552}
   m_LocalRotation: {x: -0, y: 0.105120435, z: -0, w: 0.99445957}
-  m_LocalPosition: {x: 6.49, y: 0.9089966, z: -2.41}
-  m_LocalScale: {x: 0.7051, y: 0.7051, z: 0.7051}
+  m_LocalPosition: {x: 6.49, y: 1.23, z: -2.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 741416723}
   m_Father: {fileID: 1050420307}
@@ -246,24 +246,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &80677555
-MonoBehaviour:
+--- !u!54 &80677555
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80677552}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 80677556}
-  speed: 12
---- !u!143 &80677556
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &80677556
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -271,14 +278,10 @@ CharacterController:
   m_GameObject: {fileID: 80677552}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &84020680
 PrefabInstance:
@@ -370,7 +373,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110819475}
   m_LocalRotation: {x: -0, y: 0.55388373, z: -0, w: 0.83259404}
-  m_LocalPosition: {x: 9.64, y: 0.9089966, z: -10.19}
+  m_LocalPosition: {x: 9.64, y: 1.23, z: -10.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 415985802}
@@ -389,24 +392,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &110819478
-MonoBehaviour:
+--- !u!54 &110819478
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 110819475}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 110819479}
-  speed: 12
---- !u!143 &110819479
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &110819479
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -414,14 +424,10 @@ CharacterController:
   m_GameObject: {fileID: 110819475}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &204752261
 GameObject:
@@ -450,8 +456,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204752261}
   m_LocalRotation: {x: -0, y: -0.41206342, z: -0, w: 0.91115516}
-  m_LocalPosition: {x: 12.97, y: 0.9089966, z: -18.09}
-  m_LocalScale: {x: 0.7051, y: 0.7051, z: 0.7051}
+  m_LocalPosition: {x: 12.97, y: 1.23, z: -18.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 607194815}
   m_Father: {fileID: 1050420307}
@@ -469,24 +475,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &204752264
-MonoBehaviour:
+--- !u!54 &204752264
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204752261}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 204752265}
-  speed: 12
---- !u!143 &204752265
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &204752265
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -494,14 +507,10 @@ CharacterController:
   m_GameObject: {fileID: 204752261}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &251192281
 GameObject:
@@ -530,8 +539,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251192281}
   m_LocalRotation: {x: -0, y: -0.6666857, z: -0, w: 0.745339}
-  m_LocalPosition: {x: 11.960001, y: 0.9089966, z: -5.6000004}
-  m_LocalScale: {x: 0.7051, y: 0.7051, z: 0.7051}
+  m_LocalPosition: {x: 11.960001, y: 1.23, z: -5.6000004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1109620395}
   m_Father: {fileID: 1050420307}
@@ -549,24 +558,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &251192284
-MonoBehaviour:
+--- !u!54 &251192284
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 251192281}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 251192285}
-  speed: 12
---- !u!143 &251192285
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &251192285
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -574,14 +590,10 @@ CharacterController:
   m_GameObject: {fileID: 251192281}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &254329532
 GameObject:
@@ -1182,8 +1194,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769896832}
   m_LocalRotation: {x: -0, y: -0.5212496, z: -0, w: 0.8534043}
-  m_LocalPosition: {x: 9.3, y: 0.9089966, z: -14.11}
-  m_LocalScale: {x: 0.7051, y: 0.7051, z: 0.7051}
+  m_LocalPosition: {x: 9.3, y: 1.23, z: -14.11}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1863302535}
   m_Father: {fileID: 1050420307}
@@ -1201,24 +1213,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &769896835
-MonoBehaviour:
+--- !u!54 &769896835
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769896832}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 769896836}
-  speed: 12
---- !u!143 &769896836
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &769896836
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1226,14 +1245,10 @@ CharacterController:
   m_GameObject: {fileID: 769896832}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &816268086
 GameObject:
@@ -1262,7 +1277,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816268086}
   m_LocalRotation: {x: -0, y: 0.7819875, z: -0, w: 0.62329423}
-  m_LocalPosition: {x: 4.03, y: 0.9089966, z: -17.66}
+  m_LocalPosition: {x: 4.03, y: 1.23, z: -17.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1594962696}
@@ -1281,24 +1296,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &816268089
-MonoBehaviour:
+--- !u!54 &816268089
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816268086}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 816268090}
-  speed: 12
---- !u!143 &816268090
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &816268090
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1306,14 +1328,10 @@ CharacterController:
   m_GameObject: {fileID: 816268086}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &895701386
 GameObject:
@@ -1421,7 +1439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949031067}
   m_LocalRotation: {x: -0, y: 0.37624136, z: -0, w: -0.9265217}
-  m_LocalPosition: {x: -2.53, y: 0.9089966, z: -3.82}
+  m_LocalPosition: {x: -2.53, y: 1.23, z: -3.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 895701387}
@@ -1440,24 +1458,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &949031070
-MonoBehaviour:
+--- !u!54 &949031070
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949031067}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 949031071}
-  speed: 12
---- !u!143 &949031071
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &949031071
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1465,14 +1490,10 @@ CharacterController:
   m_GameObject: {fileID: 949031067}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &960784920
 GameObject:
@@ -1501,7 +1522,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960784920}
   m_LocalRotation: {x: -0, y: 0.97916484, z: -0, w: -0.20306723}
-  m_LocalPosition: {x: 9.74, y: 0.9089966, z: -2.36}
+  m_LocalPosition: {x: 9.74, y: 1.23, z: -2.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 65372269}
@@ -1520,24 +1541,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &960784923
-MonoBehaviour:
+--- !u!54 &960784923
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960784920}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 960784924}
-  speed: 12
---- !u!143 &960784924
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &960784924
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1545,14 +1573,10 @@ CharacterController:
   m_GameObject: {fileID: 960784920}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1050420306
 GameObject:
@@ -1767,7 +1791,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 295f394da6d56b14f84890471237c60f, type: 2}
+  - {fileID: 2100000, guid: 897929efcc840c34d828ff64b33a9e18, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1804,8 +1828,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108744137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.05, z: 0}
-  m_LocalScale: {x: 200, y: 0.1, z: 200}
+  m_LocalPosition: {x: 1.2, y: 0.1, z: -13.75}
+  m_LocalScale: {x: 72.4068, y: 0.1, z: 72.40668}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
@@ -2069,8 +2093,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452742682}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.6, y: 0.9089966, z: -6.5200043}
-  m_LocalScale: {x: 0.7051, y: 0.7051, z: 0.7051}
+  m_LocalPosition: {x: 2.6, y: 1.23, z: -6.5200043}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1896700765}
   m_Father: {fileID: 1050420307}
@@ -2088,24 +2112,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &1452742685
-MonoBehaviour:
+--- !u!54 &1452742685
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452742682}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 1452742686}
-  speed: 12
---- !u!143 &1452742686
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &1452742686
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2113,14 +2144,10 @@ CharacterController:
   m_GameObject: {fileID: 1452742682}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1559864971
 PrefabInstance:
@@ -2628,8 +2655,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769229241}
   m_LocalRotation: {x: -0, y: 0.039771285, z: -0, w: 0.99920887}
-  m_LocalPosition: {x: -1.5500002, y: 0.9089966, z: -16.18}
-  m_LocalScale: {x: 0.7051, y: 0.7051, z: 0.7051}
+  m_LocalPosition: {x: -1.5500002, y: 1.23, z: -16.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1580213008}
   m_Father: {fileID: 1050420307}
@@ -2647,24 +2674,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &1769229244
-MonoBehaviour:
+--- !u!54 &1769229244
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1769229241}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 1769229245}
-  speed: 12
---- !u!143 &1769229245
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &1769229245
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2672,14 +2706,10 @@ CharacterController:
   m_GameObject: {fileID: 1769229241}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1770062005
 GameObject:
@@ -2693,6 +2723,7 @@ GameObject:
   - component: {fileID: 1770062008}
   - component: {fileID: 1770062007}
   - component: {fileID: 1770062006}
+  - component: {fileID: 1770062010}
   m_Layer: 0
   m_Name: Boundary
   m_TagString: Untagged
@@ -2709,7 +2740,7 @@ BoxCollider:
   m_GameObject: {fileID: 1770062005}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2768,12 +2799,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1770062005}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.123, y: 2.539, z: -11.611}
-  m_LocalScale: {x: 24.66128, y: 5.39701, z: 21.455736}
+  m_LocalPosition: {x: 2.677, y: 2.635, z: -10.955}
+  m_LocalScale: {x: 25.552351, y: 5.2050767, z: 22.768291}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1770062010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770062005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a278d4ccf3653947b1bdb165757f1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1785908856
 GameObject:
   m_ObjectHideFlags: 0
@@ -2971,6 +3014,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
 --- !u!1 &1863302534
@@ -3319,8 +3367,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061567160}
   m_LocalRotation: {x: -0, y: 0.3725506, z: -0, w: 0.9280119}
-  m_LocalPosition: {x: -5.2, y: 0.9089966, z: -7.16}
-  m_LocalScale: {x: 0.7051, y: 0.7051, z: 0.7051}
+  m_LocalPosition: {x: -5.2, y: 1.23, z: -7.16}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1740983858}
   m_Father: {fileID: 1050420307}
@@ -3338,24 +3386,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &2061567163
-MonoBehaviour:
+--- !u!54 &2061567163
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2061567160}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 2061567164}
-  speed: 12
---- !u!143 &2061567164
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &2061567164
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3363,14 +3418,10 @@ CharacterController:
   m_GameObject: {fileID: 2061567160}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2072456110
 PrefabInstance:
@@ -3462,7 +3513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102614054}
   m_LocalRotation: {x: -0, y: 0.8532807, z: -0, w: 0.52145195}
-  m_LocalPosition: {x: -0.32, y: 0.9089966, z: -8.97}
+  m_LocalPosition: {x: -0.32, y: 1.23, z: -8.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 688264415}
@@ -3481,24 +3532,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116eadd746e438147b233ff18741c0d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boundary: {fileID: 0}
+  minX: 0
+  maxX: 0
+  minZ: 0
+  maxZ: 0
   moveSpeed: 3
   rotateSpeed: 100
---- !u!114 &2102614057
-MonoBehaviour:
+--- !u!54 &2102614057
+Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102614054}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97cf90f20d6743443a85b98b18d674bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  controller: {fileID: 2102614058}
-  speed: 12
---- !u!143 &2102614058
-CharacterController:
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!136 &2102614058
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -3506,14 +3564,10 @@ CharacterController:
   m_GameObject: {fileID: 2102614054}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 2
+  m_Enabled: 1
   m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Height: 2.1
+  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3426302394025654052
 GameObject:
@@ -3555,8 +3609,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6511749095707531136}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.52, y: 0.1, z: 2.9}
-  m_LocalScale: {x: 3.1533, y: 3.1533, z: 3.1533}
+  m_LocalPosition: {x: 3.52, y: 0.2, z: 4.6}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 7717321301987649509}
   - {fileID: 255916400}

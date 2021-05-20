@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class WanderAI : MonoBehaviour
 {
+    public Transform boundary;
+    public float minX;
+    public float maxX;
+    public float minZ;
+    public float maxZ;
     public float moveSpeed = 3f;
     public float rotateSpeed = 100f;
     
@@ -15,7 +20,11 @@ public class WanderAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        boundary = GameObject.Find("Boundary").transform;
+        minX = boundary.position.x - boundary.localScale.x/2;
+        maxX = boundary.position.x + boundary.localScale.x/2;
+        minZ = boundary.position.z - boundary.localScale.z/2;
+        maxZ = boundary.position.z + boundary.localScale.z/2;
     }
 
     // Update is called once per frame
@@ -24,7 +33,13 @@ public class WanderAI : MonoBehaviour
         if (!isWandering) StartCoroutine(Wander());
         if (isRotatingRight) transform.Rotate(transform.up * Time.deltaTime * rotateSpeed);
         if (isRotatingLeft) transform.Rotate(transform.up * Time.deltaTime * -rotateSpeed);
-        if (isWalking) transform.position += transform.forward * Time.deltaTime * moveSpeed;
+        if (isWalking) {
+            Vector3 AIpos = transform.position;
+            AIpos += transform.forward * Time.deltaTime * moveSpeed;   
+            AIpos.x = Mathf.Clamp(AIpos.x, minX, maxX);
+            AIpos.z = Mathf.Clamp(AIpos.z, minZ, maxZ);
+            transform.position = AIpos;
+        }
     }
 
     IEnumerator Wander() {
