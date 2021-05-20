@@ -11,16 +11,20 @@ public class WanderAI : MonoBehaviour
     public float maxZ;
     public float moveSpeed = 3f;
     public float rotateSpeed = 100f;
+    public int maxWalkTime = 5;
+    public int maxRotateTime = 3;
     
     private bool isWandering = false;
     private bool isWalking = false;
     private bool isRotatingLeft = false;
     private bool isRotatingRight = false;
+    private Spawner spawner;
 
     // Start is called before the first frame update
     void Start()
     {
         boundary = GameObject.Find("Boundary").transform;
+        spawner = boundary.gameObject.GetComponent<Spawner>();
         minX = boundary.position.x - boundary.localScale.x/2;
         maxX = boundary.position.x + boundary.localScale.x/2;
         minZ = boundary.position.z - boundary.localScale.z/2;
@@ -43,11 +47,11 @@ public class WanderAI : MonoBehaviour
     }
 
     IEnumerator Wander() {
-        int rotateTime = Random.Range(1, 3); // Time takes to rotate
-        int rotateWait = Random.Range(1, 4); // Time between each rotate
+        int rotateTime = Random.Range(1, maxRotateTime); // Time takes to rotate
+        int rotateWait = Random.Range(1, 1); // Time between each rotate
         int rotateLorR = Random.Range(1, 2); // Determines whether to rotate L or R
-        int walkWait = Random.Range(1, 4); // Time between walking
-        int walkTime = Random.Range(1, 5); // Time takes to walk
+        int walkWait = Random.Range(1, 1); // Time between walking
+        int walkTime = Random.Range(1, maxWalkTime); // Time takes to walk
 
         isWandering = true;
 
@@ -77,5 +81,13 @@ public class WanderAI : MonoBehaviour
     public void ShotByBullet() {
         gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
         Destroy(gameObject);
+        if (gameObject.tag == "Civilian") {
+            Debug.Log("Civilian killed");
+            spawner.DecrementCivilianCount();
+        }
+        if (gameObject.tag == "Enemy") {
+            Debug.Log("Enemy killed");
+            spawner.DecrementEnemyCount();
+        }
     }
 }
