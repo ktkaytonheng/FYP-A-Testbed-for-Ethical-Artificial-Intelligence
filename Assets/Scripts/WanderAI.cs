@@ -53,24 +53,29 @@ public class WanderAI : MonoBehaviour
 
         yield return new WaitForSeconds(walkWait);
         isWalking = true;
-        Debug.Log("Walking");
+        // Debug.Log("Walking");
         yield return new WaitForSeconds(walkTime);
         isWalking = false;
         yield return new WaitForSeconds(rotateWait);
         switch(rotateLorR) {
             case 1:
                 isRotatingRight = true;
-                Debug.Log("Rotating right");
+                // Debug.Log("Rotating right");
                 yield return new WaitForSeconds(rotateTime);
                 isRotatingRight = false;
                 break;
             case 2:
                 isRotatingLeft = true;
-                Debug.Log("Rotating left");
+                // Debug.Log("Rotating left");
                 yield return new WaitForSeconds(rotateTime);
                 isRotatingLeft = false;
                 break;
         }
         isWandering = false;
+    }
+
+    public void ShotByBullet() {
+        gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+        Destroy(gameObject);
     }
 }
