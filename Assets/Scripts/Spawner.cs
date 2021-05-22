@@ -9,6 +9,11 @@ public class Spawner : MonoBehaviour
     public float timeBetweenNPCSpawn = 3f;
     public int noOfNPCSpawns = 1;
     public int maxNPC = 8;
+    public float moveSpeed = 3f;
+    public float minRotateSpeed = 150f;
+    public float maxRotateSpeed = 220f;
+    public int maxWalkTime = 5;
+    public int maxRotateTime = 3;
         
     [Header("Prefabs")]
     public GameObject NPCPrefab;

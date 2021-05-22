@@ -6,8 +6,9 @@ public class Bullet : MonoBehaviour
     private Transform target;
     private Vector3 dir;
     public float bulletSpeed = 80f;
-    public float explosionRadius = 3f;
-    public float explosionForce = 700f;
+    public float explosionKillRadius;
+    public float explosionPushRadius;
+    public float explosionForce;
     public GameObject explosionEffect;
     private float timeInstantiated;
     private bool collided = false;
@@ -44,17 +45,28 @@ public class Bullet : MonoBehaviour
         
         GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
         Destroy(explosion, 3f);
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
-
-        foreach (Collider collateral in colliders) {
-            Rigidbody rb =collateral.GetComponent<Rigidbody>();
-            if (rb != null) {
-                rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
-            }
+        
+        // To kill/destroy
+        Collider[] collidersHit = Physics.OverlapSphere(transform.position, explosionKillRadius);
+        foreach (Collider collateral in collidersHit) {
+            if (collateral.tag == "Enemy" || collateral.tag == "Civilian") collateral.GetComponent<WanderAI>().ShotByBullet();
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            Destroy(gameObject);
         }   
 
-        if (col.tag == "Enemy" || col.tag == "Civilian") col.GetComponent<WanderAI>().ShotByBullet();
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
-        Destroy(gameObject);
+        // To push
+        Collider[] collidersPushed = Physics.OverlapSphere(transform.position, explosionPushRadius);
+        foreach (Collider collateral in collidersPushed) {
+            Rigidbody rb =collateral.GetComponent<Rigidbody>();
+            if (rb != null) {
+                rb.AddExplosionForce(explosionForce, transform.position, explosionPushRadius);
+            }
+        }      
+    }
+
+    public void setAttributes(float explosionForce, float explosionKillRadius, float explosionPushRadius) {
+        this.explosionForce = explosionForce;
+        this.explosionKillRadius = explosionKillRadius;
+        this.explosionPushRadius = explosionPushRadius;
     }
 }

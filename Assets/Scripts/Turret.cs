@@ -12,6 +12,9 @@ public class Turret : MonoBehaviour
     public float fireRate = 1f;
     public float bulletSize = 0.10f;
     private float fireCountdown = 0f;
+    public float explosionKillRadius = 10f;
+    public float explosionPushRadius = 20f;
+    public float explosionForce = 800f;
 
     [Header("Unity Setup fields")]
 
@@ -78,6 +81,7 @@ public class Turret : MonoBehaviour
         GameObject bulletObject = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         bulletObject.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
         Bullet bullet = bulletObject.GetComponent<Bullet>();
+        bullet.setAttributes(explosionForce, explosionKillRadius, explosionPushRadius);
         if (bullet != null) bullet.Seek(target);
     }
 

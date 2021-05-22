@@ -9,15 +9,17 @@ public class WanderAI : MonoBehaviour
     public float maxX;
     public float minZ;
     public float maxZ;
-    public float moveSpeed = 3f;
-    public float rotateSpeed = 100f;
-    public int maxWalkTime = 5;
-    public int maxRotateTime = 3;
+    public float moveSpeed;
+    public float minRotateSpeed;
+    public float maxRotateSpeed;
+    public int maxWalkTime;
+    public int maxRotateTime;
     
     private bool isWandering = false;
     private bool isWalking = false;
     private bool isRotatingLeft = false;
     private bool isRotatingRight = false;
+    private float rotateSpeed;
     private Spawner spawner;
 
     // Start is called before the first frame update
@@ -47,6 +49,7 @@ public class WanderAI : MonoBehaviour
     }
 
     IEnumerator Wander() {
+        rotateSpeed = Random.Range(minRotateSpeed, maxRotateSpeed);
         int rotateTime = Random.Range(1, maxRotateTime); // Time takes to rotate
         int rotateWait = Random.Range(1, 1); // Time between each rotate
         int rotateLorR = Random.Range(1, 2); // Determines whether to rotate L or R
@@ -83,5 +86,13 @@ public class WanderAI : MonoBehaviour
         Destroy(gameObject);
         Debug.Log(gameObject.name + " killed");
         spawner.DecrementNPCCount();
+    }
+
+    public void setAttributes(float moveSpeed, float minRotSpeed, float maxRotSpeed, int maxWalkTime, int maxRotTime) {
+        this.moveSpeed = moveSpeed;
+        this.minRotateSpeed = minRotSpeed;
+        this.maxRotateSpeed = maxRotSpeed;
+        this.maxWalkTime = maxWalkTime;
+        this.maxRotateTime = maxRotTime;
     }
 }

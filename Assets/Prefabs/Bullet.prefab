@@ -107,6 +107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 70
-  explosionRadius: 3
-  explosionForce: 700
+  explosionRadius: 30
+  explosionForce: 800
   explosionEffect: {fileID: 100000, guid: 15ca5b8fa431dc04291a79cadcd19874, type: 3}
