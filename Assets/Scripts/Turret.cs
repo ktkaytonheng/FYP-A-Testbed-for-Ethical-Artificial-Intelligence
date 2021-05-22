@@ -16,6 +16,7 @@ public class Turret : MonoBehaviour
     [Header("Unity Setup fields")]
 
     public bool turretActivated = false;
+    public bool manualFiringMode = false;
     public string enemyTag = "Enemy";
     public Transform partToRotate;
     public float turnSpeed = 10f;
@@ -51,17 +52,25 @@ public class Turret : MonoBehaviour
     {
         if (target == null) return;
 
-        if (turretActivated) {
+        if (turretActivated) { 
             Vector3 dir = target.position - transform.position;
             Quaternion lookRotation = Quaternion.LookRotation(dir);
             Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
             partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-            if (fireCountdown <= 0f) {
-                Shoot();
-                fireCountdown = 1f / fireRate;
+            if (!manualFiringMode) {
+                if (fireCountdown <= 0f) {
+                    Shoot();
+                    fireCountdown = 1f / fireRate;
+                }
+                fireCountdown -= Time.deltaTime;
             }
-            fireCountdown -= Time.deltaTime;
+            else {
+                if (Input.GetKeyDown("space")) {
+                    Debug.Log("Manual shoot!");
+                    Shoot();
+                }
+            }
         }
     }
 

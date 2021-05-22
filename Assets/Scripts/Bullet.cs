@@ -6,8 +6,12 @@ public class Bullet : MonoBehaviour
     private Transform target;
     private Vector3 dir;
     public float bulletSpeed = 80f;
+    public float explosionRadius = 3f;
+    public float explosionForce = 700f;
+    public GameObject explosionEffect;
     private float timeInstantiated;
     private bool collided = false;
+
     public void Seek(Transform _target) {
         target = _target;
     }
@@ -35,10 +39,20 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider col) {
-        if (collided) return;
-        collided = true;
-        Debug.Log("Hit " + col.name);
+    void OnTriggerEnter(Collider col) {
+        // Debug.Log("Hit " + col.name);
+        
+        GameObject explosion = Instantiate(explosionEffect, transform.position, transform.rotation);
+        Destroy(explosion, 3f);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+
+        foreach (Collider collateral in colliders) {
+            Rigidbody rb =collateral.GetComponent<Rigidbody>();
+            if (rb != null) {
+                rb.AddExplosionForce(explosionForce, transform.position, explosionRadius);
+            }
+        }   
+
         if (col.tag == "Enemy" || col.tag == "Civilian") col.GetComponent<WanderAI>().ShotByBullet();
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         Destroy(gameObject);

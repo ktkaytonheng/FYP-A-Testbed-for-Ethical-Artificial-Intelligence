@@ -130,7 +130,7 @@ MonoBehaviour:
   maxX: 0
   minZ: 0
   maxZ: 0
-  moveSpeed: 3
+  moveSpeed: 5
   rotateSpeed: 150
   maxWalkTime: 5
   maxRotateTime: 2
