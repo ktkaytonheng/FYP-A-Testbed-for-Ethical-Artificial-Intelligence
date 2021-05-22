@@ -24,7 +24,7 @@ public class WanderAI : MonoBehaviour
     void Start()
     {
         boundary = GameObject.Find("Boundary").transform;
-        spawner = boundary.gameObject.GetComponent<Spawner>();
+        spawner = gameObject.transform.parent.GetComponent<Spawner>();
         minX = boundary.position.x - boundary.localScale.x/2;
         maxX = boundary.position.x + boundary.localScale.x/2;
         minZ = boundary.position.z - boundary.localScale.z/2;
@@ -81,13 +81,7 @@ public class WanderAI : MonoBehaviour
     public void ShotByBullet() {
         gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
         Destroy(gameObject);
-        if (gameObject.tag == "Civilian") {
-            Debug.Log("Civilian killed");
-            spawner.DecrementCivilianCount();
-        }
-        if (gameObject.tag == "Enemy") {
-            Debug.Log("Enemy killed");
-            spawner.DecrementEnemyCount();
-        }
+        Debug.Log(gameObject.name + " killed");
+        spawner.DecrementNPCCount();
     }
 }
