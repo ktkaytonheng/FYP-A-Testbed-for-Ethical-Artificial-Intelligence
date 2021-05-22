@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Civilian
   - Bullet
+  - Animal
   layers:
   - Default
   - TransparentFX
