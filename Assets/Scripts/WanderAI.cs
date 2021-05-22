@@ -31,6 +31,11 @@ public class WanderAI : MonoBehaviour
         maxX = boundary.position.x + boundary.localScale.x/2;
         minZ = boundary.position.z - boundary.localScale.z/2;
         maxZ = boundary.position.z + boundary.localScale.z/2;
+        moveSpeed = spawner.moveSpeed;
+        minRotateSpeed = spawner.minRotateSpeed;
+        maxRotateSpeed = spawner.maxRotateSpeed;
+        maxWalkTime = spawner.maxWalkTime;
+        maxRotateTime = spawner.maxRotateTime;
     }
 
     // Update is called once per frame
@@ -81,7 +86,7 @@ public class WanderAI : MonoBehaviour
         isWandering = false;
     }
 
-    public void ShotByBullet() {
+    public void Hit() {
         gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
         Destroy(gameObject);
         Debug.Log(gameObject.name + " killed");

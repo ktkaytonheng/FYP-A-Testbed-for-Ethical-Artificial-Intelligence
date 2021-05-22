@@ -2264,6 +2264,11 @@ MonoBehaviour:
   timeBetweenNPCSpawn: 3
   noOfNPCSpawns: 3
   maxNPC: 12
+  moveSpeed: 3
+  minRotateSpeed: 150
+  maxRotateSpeed: 220
+  maxWalkTime: 5
+  maxRotateTime: 3
   NPCPrefab: {fileID: 1634511512803156095, guid: 88549e045946dc84fbc419bf99d48ede,
     type: 3}
 --- !u!1001 &1071778276
@@ -3831,7 +3836,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785908856}
   m_LocalRotation: {x: 0.0000029675389, y: 0.93187827, z: -0.36277118, w: 0.000037478618}
-  m_LocalPosition: {x: 0, y: 23, z: 24}
+  m_LocalPosition: {x: 4.3, y: 23, z: 18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3884,6 +3889,11 @@ MonoBehaviour:
   timeBetweenNPCSpawn: 2
   noOfNPCSpawns: 4
   maxNPC: 14
+  moveSpeed: 3
+  minRotateSpeed: 150
+  maxRotateSpeed: 220
+  maxWalkTime: 5
+  maxRotateTime: 3
   NPCPrefab: {fileID: 4686225673699186645, guid: ccec68c03ae3c3a4cb0a9def0e73de7c,
     type: 3}
 --- !u!1 &1834986618
@@ -3971,7 +3981,8 @@ MonoBehaviour:
   minZ: 0
   maxZ: 0
   moveSpeed: 3
-  rotateSpeed: 100
+  minRotateSpeed: 150
+  maxRotateSpeed: 220
   maxWalkTime: 5
   maxRotateTime: 3
 --- !u!1001 &1919392659
@@ -4370,17 +4381,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  range: 30
-  fireRate: 3
+  range: 15
+  fireRate: 100
+  turnSpeed: 20
   bulletSize: 0.1
+  bulletSpeed: 80
+  explosionEnabled: 1
+  explosionKillRadius: 10
+  explosionPushRadius: 20
+  explosionForce: 800
   turretActivated: 0
   manualFiringMode: 0
   enemyTag: Enemy
-  partToRotate: {fileID: 255916400}
-  turnSpeed: 10
-  bulletPrefab: {fileID: 7422647181261139599, guid: 64e6a1f97ae330f4a8c0a8fb14c72076,
-    type: 3}
-  firePoint: {fileID: 2089879412}
+  partToRotate: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  firePoint: {fileID: 0}
 --- !u!1 &6605633399603710103
 GameObject:
   m_ObjectHideFlags: 0

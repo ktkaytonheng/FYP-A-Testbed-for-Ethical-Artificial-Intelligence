@@ -10,8 +10,8 @@ public class Spawner : MonoBehaviour
     public int noOfNPCSpawns = 1;
     public int maxNPC = 8;
     public float moveSpeed = 3f;
-    public float minRotateSpeed = 150f;
-    public float maxRotateSpeed = 220f;
+    public float minRotateSpeed = 100f;
+    public float maxRotateSpeed = 270f;
     public int maxWalkTime = 5;
     public int maxRotateTime = 3;
         

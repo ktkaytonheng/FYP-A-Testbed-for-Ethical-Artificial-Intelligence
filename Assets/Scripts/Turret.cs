@@ -9,9 +9,12 @@ public class Turret : MonoBehaviour
     [Header("Attributes")]
 
     public float range = 15f;
-    public float fireRate = 1f;
-    public float bulletSize = 0.10f;
+    public float fireRate = 100f;
+    public float turnSpeed = 20f;
+    public float bulletSize = 0.1f;
+    public float bulletSpeed = 80f;
     private float fireCountdown = 0f;
+    public bool explosionEnabled = true;
     public float explosionKillRadius = 10f;
     public float explosionPushRadius = 20f;
     public float explosionForce = 800f;
@@ -22,7 +25,7 @@ public class Turret : MonoBehaviour
     public bool manualFiringMode = false;
     public string enemyTag = "Enemy";
     public Transform partToRotate;
-    public float turnSpeed = 10f;
+    
 
     public GameObject bulletPrefab;
     public Transform firePoint;
@@ -64,7 +67,7 @@ public class Turret : MonoBehaviour
             if (!manualFiringMode) {
                 if (fireCountdown <= 0f) {
                     Shoot();
-                    fireCountdown = 1f / fireRate;
+                    fireCountdown = 100f / fireRate;
                 }
                 fireCountdown -= Time.deltaTime;
             }
@@ -78,10 +81,9 @@ public class Turret : MonoBehaviour
     }
 
     void Shoot() {
-        GameObject bulletObject = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletObject = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, gameObject.transform);
         bulletObject.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
         Bullet bullet = bulletObject.GetComponent<Bullet>();
-        bullet.setAttributes(explosionForce, explosionKillRadius, explosionPushRadius);
         if (bullet != null) bullet.Seek(target);
     }
 
