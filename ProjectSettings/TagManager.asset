@@ -8,6 +8,7 @@ TagManager:
   - Civilian
   - Bullet
   - Animal
+  - Wall
   layers:
   - Default
   - TransparentFX

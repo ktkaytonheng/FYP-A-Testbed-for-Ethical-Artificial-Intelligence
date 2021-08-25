@@ -1,0 +1,47 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1627621505",
+        "python_version": "3.7.9 (v3.7.9:13c94747c7, Aug 15 2020, 01:31:08) \n[Clang 6.0 (clang-600.0.57)]",
+        "command_line_arguments": "/Library/Frameworks/Python.framework/Versions/3.7/bin/mlagents-learn config/Targeting.yaml --run-id=TargetingWConf --force",
+        "mlagents_version": "0.27.0",
+        "mlagents_envs_version": "0.27.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.7.0",
+        "numpy_version": "1.20.3",
+        "end_time_seconds": "1627621532"
+    },
+    "total": 27.412341958000003,
+    "count": 1,
+    "self": 0.01910637400000681,
+    "children": {
+        "run_training.setup": {
+            "total": 0.02310754199999998,
+            "count": 1,
+            "self": 0.02310754199999998
+        },
+        "TrainerController.start_learning": {
+            "total": 27.370128041999997,
+            "count": 1,
+            "self": 0.0012582919999921671,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 27.368837917000004,
+                    "count": 1,
+                    "self": 27.368837917000004
+                },
+                "trainer_threads": {
+                    "total": 3.4580000018991086e-06,
+                    "count": 1,
+                    "self": 3.4580000018991086e-06
+                },
+                "TrainerController._save_models": {
+                    "total": 2.8374999999414285e-05,
+                    "count": 1,
+                    "self": 2.8374999999414285e-05
+                }
+            }
+        }
+    }
+}

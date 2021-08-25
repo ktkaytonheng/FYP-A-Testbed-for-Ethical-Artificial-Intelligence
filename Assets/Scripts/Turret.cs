@@ -5,19 +5,25 @@ using UnityEngine;
 public class Turret : MonoBehaviour
 {
     public Transform target;
+    public Transform targetArea;
 
     [Header("Attributes")]
 
+    public bool manualMove;
     public float range = 15f;
+    public float targetAreaSpeed = 1f;
     public float fireRate = 100f;
     public float turnSpeed = 20f;
     public float bulletSize = 0.1f;
     public float bulletSpeed = 80f;
     private float fireCountdown = 0f;
+    public int currentTotalWorth;
     public bool explosionEnabled = true;
-    public float explosionKillRadius = 10f;
+    public bool explosionPushEnabled = false;
+    public float explosionKillRadius;
     public float explosionPushRadius = 20f;
     public float explosionForce = 800f;
+    public float moveTargetAreaDist = 0.5f;
 
     [Header("Unity Setup fields")]
 
@@ -29,11 +35,14 @@ public class Turret : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public bool targetFound = false;
     
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        Transform Simulation = transform.parent;
+        targetArea = transform.Find("TargetingSphere");
+        explosionKillRadius = targetArea.GetComponent<SphereCollider>().radius * targetArea.transform.lossyScale.x;
     }
 
     void UpdateTarget() {
@@ -49,46 +58,114 @@ public class Turret : MonoBehaviour
             }
         }
 
-        if (nearestEnemy != null && shortestDistance <= range) target = nearestEnemy.transform;
+        if (nearestEnemy != null && shortestDistance <= range) {
+            target = nearestEnemy.transform;
+            // transform.Find("TargetingSphere").GetComponent<TurretAgent>().target = target;
+        }
         else target = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (target == null) return;
+        UpdateTarget();
+        if (targetArea == null) return;
 
-        if (turretActivated) { 
-            Vector3 dir = target.position - transform.position;
-            Quaternion lookRotation = Quaternion.LookRotation(dir);
-            Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-            partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        Vector3 dir = targetArea.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-            if (!manualFiringMode) {
-                if (fireCountdown <= 0f) {
-                    Shoot();
-                    fireCountdown = 100f / fireRate;
-                }
-                fireCountdown -= Time.deltaTime;
+        // For moving the targeting area
+        if (manualMove) {
+            if (Input.GetKey("w")) {
+                targetArea.Translate(0f, 0f, -1 * moveTargetAreaDist);
             }
-            else {
-                if (Input.GetKeyDown("space")) {
-                    Debug.Log("Manual shoot!");
-                    Shoot();
-                }
+            if (Input.GetKey("a")) {
+                targetArea.Translate(moveTargetAreaDist, 0f, 0f);
+            }
+            if (Input.GetKey("s")) {
+                targetArea.Translate(0f, 0f, moveTargetAreaDist);
+            }
+            if (Input.GetKey("d")) {
+                targetArea.Translate(-1 * moveTargetAreaDist, 0f, 0f);
             }
         }
+        else {
+            if (target != null) targetArea.position = Vector3.MoveTowards(targetArea.position, target.position, targetAreaSpeed);
+        }
+
+        // Set target Area size
+        if (Input.GetKey("e")) {
+            targetArea.localScale += new Vector3(0.1f, 0.1f, 0.1f);
+            explosionKillRadius = targetArea.GetComponent<SphereCollider>().radius * targetArea.transform.lossyScale.x;
+        }
+        if (Input.GetKey("q")) {
+            targetArea.localScale += new Vector3(-0.1f, -0.1f, -0.1f);
+            explosionKillRadius = targetArea.GetComponent<SphereCollider>().radius * targetArea.transform.lossyScale.x;
+        }
+
+        // Fire
+        if (Input.GetKeyDown("space")) {
+            Debug.Log("Manual shoot!");
+            Shoot();
+        }
+
+        // Old targeting system, ignore ----------------------------------------------------------------
+        // if (turretActivated) { 
+        //     Vector3 dir = targetArea.position - transform.position;
+        //     Quaternion lookRotation = Quaternion.LookRotation(dir);
+        //     Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        //     partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
+        //     if (!manualFiringMode) {
+        //         if (fireCountdown <= 0f) {
+        //             Shoot();
+        //             float actualFireRate = (fireRate >= 100) ? fireRate : 100; 
+        //             fireCountdown = 100f / fireRate;
+        //         }
+        //         fireCountdown -= Time.deltaTime;
+        //     }
+        //     else {
+        //         if (Input.GetKeyDown("space")) {
+        //             Debug.Log("Manual shoot!");
+        //             Shoot();
+        //         }
+        //     }
+        // }
+        // ------------------------------------------------------------------------------------------------
     }
 
-    void Shoot() {
+    // Functions to move the targeting area, for the turret agent to call --------------------------------
+    // Currently useless as agent changed to not move the targeting area, removed if not changed
+    public void MoveTargetingAreaLeft() {
+        targetArea.Translate(moveTargetAreaDist, 0f, 0f);
+    }
+
+    public void MoveTargetingAreaRight() {
+        targetArea.Translate(-1 * moveTargetAreaDist, 0f, 0f);
+    }
+
+    public void MoveTargetingAreaUp() {
+        targetArea.Translate(0f, 0f, -1 * moveTargetAreaDist);
+    }
+
+    public void MoveTargetingAreaDown() {
+        targetArea.Translate(0f, 0f, moveTargetAreaDist);
+    }
+    // ------------------------------------------------------------------------------------------------------
+
+    public void Shoot() {
+        // GameObject targetPosition = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        // targetPosition.transform.position = targetArea.position;
         GameObject bulletObject = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation, gameObject.transform);
         bulletObject.transform.localScale = new Vector3(bulletSize, bulletSize, bulletSize);
         Bullet bullet = bulletObject.GetComponent<Bullet>();
-        if (bullet != null) bullet.Seek(target);
+        if (bullet != null) bullet.Seek(targetArea);
     }
 
-    void OnDrawGizmosSelected() {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
-    }
+    // void OnDrawGizmosSelected() {
+    //     Gizmos.color = Color.red;
+    //     Gizmos.DrawWireSphere(transform.position, range);
+    // }
 }

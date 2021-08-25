@@ -1,0 +1,29 @@
+{
+    "Targeting": {
+        "checkpoints": [
+            {
+                "steps": 47047,
+                "file_path": "results/WTargetingDemo/Targeting/Targeting-47047.onnx",
+                "reward": -4.5,
+                "creation_time": 1628837596.322237,
+                "auxillary_file_paths": [
+                    "results/WTargetingDemo/Targeting/Targeting-47047.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 47047,
+            "file_path": "results/WTargetingDemo/Targeting.onnx",
+            "reward": -4.5,
+            "creation_time": 1628837596.322237,
+            "auxillary_file_paths": [
+                "results/WTargetingDemo/Targeting/Targeting-47047.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.27.0",
+        "torch_version": "1.7.0"
+    }
+}

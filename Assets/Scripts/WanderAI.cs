@@ -14,6 +14,7 @@ public class WanderAI : MonoBehaviour
     public float maxRotateSpeed;
     public int maxWalkTime;
     public int maxRotateTime;
+    public int worthValue;
     
     private bool isWandering = false;
     private bool isWalking = false;
@@ -25,7 +26,8 @@ public class WanderAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        boundary = GameObject.Find("Boundary").transform;
+        Transform Simulation = transform.parent.parent;
+        boundary = Simulation.Find("Boundary").transform;
         spawner = gameObject.transform.parent.GetComponent<Spawner>();
         minX = boundary.position.x - boundary.localScale.x/2;
         maxX = boundary.position.x + boundary.localScale.x/2;
@@ -36,6 +38,7 @@ public class WanderAI : MonoBehaviour
         maxRotateSpeed = spawner.maxRotateSpeed;
         maxWalkTime = spawner.maxWalkTime;
         maxRotateTime = spawner.maxRotateTime;
+        SetWorth();
     }
 
     // Update is called once per frame
@@ -50,6 +53,23 @@ public class WanderAI : MonoBehaviour
             AIpos.x = Mathf.Clamp(AIpos.x, minX, maxX);
             AIpos.z = Mathf.Clamp(AIpos.z, minZ, maxZ);
             transform.position = AIpos;
+        }
+    }
+
+    public void SetWorth() {
+        switch(transform.tag) {
+            case "Enemy":
+                worthValue = Random.Range(-10, -100);
+                break;
+            case "Civilian":
+                worthValue = Random.Range(80, 100);
+                break;
+            case "Animal":
+                worthValue = Random.Range(1, 20);
+                break;
+            default:
+                worthValue = 0;
+                break;
         }
     }
 
@@ -88,9 +108,9 @@ public class WanderAI : MonoBehaviour
 
     public void Hit() {
         gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
-        Destroy(gameObject);
         Debug.Log(gameObject.name + " killed");
         spawner.DecrementNPCCount();
+        Destroy(gameObject);
     }
 
     public void setAttributes(float moveSpeed, float minRotSpeed, float maxRotSpeed, int maxWalkTime, int maxRotTime) {
@@ -100,4 +120,5 @@ public class WanderAI : MonoBehaviour
         this.maxWalkTime = maxWalkTime;
         this.maxRotateTime = maxRotTime;
     }
+
 }
